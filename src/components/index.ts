@@ -4,7 +4,7 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-07-22 16:41:24
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-07-23 15:05:39
+ * @LastEditTime: 2021-07-23 23:51:40
  */
 
 /**
@@ -27,5 +27,3 @@ export const setGlobalComponent = (app?): void => {
     app.component(name, config.default || config)
   })
 }
-
-registeGlobalComponent()

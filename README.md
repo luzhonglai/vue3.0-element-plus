@@ -4,8 +4,7 @@
 
 ## 项目亮点
 
-- [配置多环境变量](#env)
-- [多页面模块开发](#multiple)
+- 多页面模块开发
 - mock 数据模拟
 - 接口 Log 窗口调试，
 - Eelment-plus 组件按需加载
@@ -37,22 +36,7 @@
     └── unit
 ```
 
-### ✅ 配置多环境变量
-
-- 通过 `npm run serve` 启动本地 , 执行 `development`
-- 通过 `npm run test` 打包测试 , 执行 `test`
-- 通过 `npm run build` 打包正式 , 执行 `production`
-
-```javascript
-"scripts": {
-  "serve": "vue-cli-service serve --open",
-  "test": "vue-cli-service build --mode test",
-  "build": "vue-cli-service build",
-}
-```
-
 ### ⚠️ 注意
-
 
 ### 快速开始
 
