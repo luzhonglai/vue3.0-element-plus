@@ -1,4 +1,4 @@
-# vue-multiple-pages
+# multiple-vue3-pc
 
 > 基于 vue3.0 + tscript + element-plus + sass/less 适配方案，适用于多页面cms端模板脚手架。
 
