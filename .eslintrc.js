@@ -4,7 +4,7 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-02-05 10:40:53
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-07-23 15:12:36
+ * @LastEditTime: 2021-07-24 00:26:14
  */
 
 module.exports = {
@@ -15,16 +15,17 @@ module.exports = {
     es6: true
   },
   extends: [
-    'plugin:vue/essential',
-    'plugin:prettier/recommended',
-    '@vue/typescript/recommended',
-    '@vue/prettier/@typescript-eslint'
+    'plugin:vue/vue3-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended', 
   ],
 
   parserOptions: {
     ecmaVersion: 2020,
     parser: '@typescript-eslint/parser'
   },
+  
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

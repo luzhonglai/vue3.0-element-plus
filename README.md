@@ -1,8 +1,8 @@
-# multiple-vue3-pc
+# multiple-vue3-pc  (vue3与tsx体验版)
 
-> 基于 vue3.0 + tscript + element-plus + sass/less 适配方案，适用于多页面cms端模板脚手架。
+> 基于 vue3.0 + typeScript + element-plus + sass/less 适配方案，适用于多页面cms端模板脚手架。
 
-## 项目亮点
+## 模版亮点
 
 - 多页面模块开发
 - mock 数据模拟
@@ -36,7 +36,18 @@
     └── unit
 ```
 
-### ⚠️ 注意
+### 准备工作
+
+```bash
+#确保安装yarn
+npm install yarn -g
+
+#安装依赖
+yarn install
+```
+
+
+### 多页面配置
 
 ### 快速开始
 
@@ -47,3 +58,4 @@ yarn run serve
 
 ### 优化问题记录
 
+### 最后
