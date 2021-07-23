@@ -4,11 +4,11 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-01-29 16:02:15
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-04-29 18:28:49
+ * @LastEditTime: 2021-07-22 16:21:08
  */
 
 'use strict'
-let buildMoudle = []
+const buildMoudle = []
 const fs = require('fs')
 const path = require('path')
 const minimist = require('minimist')
@@ -18,7 +18,8 @@ const appName = argv.appName || buildMoudle
 const sourcePath = path.resolve(__dirname, '../src/pages')
 const dirents = fs.readdirSync(sourcePath, { encoding: 'utf8', withFileTypes: true })
 
-let apps = {}
+const apps = {}
+
 dirents
   .filter((dirent) => dirent.isDirectory())
   .forEach(
@@ -35,13 +36,14 @@ dirents
       })
   )
 
-let pages = {}
-if (appName) {
+const pages = {}
+
+if (appName.length > 0) {
   if (Array.isArray(appName) == true) {
-    for (const key in appName) {
+    for (const value of appName) {
       // eslint-disable-next-line no-prototype-builtins
-      if (apps.hasOwnProperty(key)) {
-        pages[key] = apps[key]
+      if (apps.hasOwnProperty(value)) {
+        pages[value] = apps[value]
       }
     }
   } else if (appName !== '') {
@@ -56,7 +58,7 @@ if (appName) {
     process.exit(-1)
   } else {
     console.error('------------------------------------------\n')
-    console.error(`多页面应用名称: ${appName} ----- 页面总数为：${Object.keys(pages).length}`)
+    console.error(`应用名称: ${appName} ----- 页面总数为：${Object.keys(pages).length}`)
     console.error('\n------------------------------------------\n')
   }
 }

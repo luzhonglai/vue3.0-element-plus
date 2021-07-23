@@ -1,12 +1,10 @@
-/* eslint-disable @typescript-eslint/camelcase */
-
 /*
  * @Descripttion:
  * @repository: https://github.com/luzhonglai
  * @Author: ZhongLai Lu
  * @Date: 2021-02-05 10:58:35
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-05-07 15:47:54
+ * @LastEditTime: 2021-07-21 11:22:30
  */
 
 // const pageConfig = require("./config/page.config");
@@ -17,6 +15,7 @@ const path = require('path')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 // 代码压缩
 const TerserPlugin = require('terser-webpack-plugin')
+const HardSourWebpackPlugin = require('hard-source-webpack-plugin')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -36,6 +35,7 @@ module.exports = {
     }
   },
   chainWebpack: (config) => {
+    config.plugin('cache').use(HardSourWebpackPlugin)
     config.resolve.alias
       .set('@', resolve('src'))
       .set('_v', resolve('src/views'))

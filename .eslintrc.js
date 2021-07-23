@@ -4,7 +4,7 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-02-05 10:40:53
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-05-10 16:50:24
+ * @LastEditTime: 2021-07-23 15:12:36
  */
 
 module.exports = {
@@ -17,8 +17,6 @@ module.exports = {
   extends: [
     'plugin:vue/essential',
     'plugin:prettier/recommended',
-    '@vue/prettier',
-    'eslint:recommended',
     '@vue/typescript/recommended',
     '@vue/prettier/@typescript-eslint'
   ],

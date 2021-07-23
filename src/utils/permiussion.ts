@@ -4,8 +4,9 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-05-06 14:01:59
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-05-07 17:58:55
+ * @LastEditTime: 2021-07-21 11:24:36
  */
+
 import router from './router'
 
 import NProgress from 'nprogress' // 引入进度条
@@ -30,7 +31,8 @@ const whiteList: string[] = ['/login'] // 白名单
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  if (1 == 1) {
+  // eslint-disable-next-line no-constant-condition
+  if (true) {
     if (to.path === '/login') {
       next({ path: '/' })
     } else {

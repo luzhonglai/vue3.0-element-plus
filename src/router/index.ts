@@ -4,12 +4,12 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-05-07 15:35:43
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-05-08 10:57:29
+ * @LastEditTime: 2021-07-23 15:52:24
  */
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 import { AppRouteRecordRaw } from '@/router/types'
-const Layout = () => import('@/layout/index.vue')
+// const Layout = () => import('@/layout/index.vue')
 const constantRouterMap: AppRouteRecordRaw[] = [
   {
     path: '/',
@@ -19,7 +19,6 @@ const constantRouterMap: AppRouteRecordRaw[] = [
       title: '超时占位',
       icon: 'menu-authAdmin'
     },
-    component: Layout,
     children: [
       {
         path: 'whiteList',
@@ -28,7 +27,7 @@ const constantRouterMap: AppRouteRecordRaw[] = [
           title: '白名单管理',
           icon: ''
         },
-        component: () => import('@/views/home/whiteList')
+        component: () => import('@/views/home/whiteList.tsx')
       },
       {
         path: '/roleList',

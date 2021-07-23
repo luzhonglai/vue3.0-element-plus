@@ -4,39 +4,28 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-02-05 10:40:53
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-05-08 16:45:56
+ * @LastEditTime: 2021-07-23 15:47:28
  */
 
-import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
 import store from './store'
-import { registeGlobalComponent } from '@/components'
+import router from './router'
+import { createApp } from 'vue'
 import { setElement } from '@/plugins/element'
+import { setGlobalComponent } from '@/components'
 
 // 引入mock
 // import '@/mock/mock-server'
 
 // 引入路由守护（权限）
-import './permiussion'
+// import './permiussion'
 
-/**
- * @description 全局样式引入
- * @reset 重置浏览器默认样式
- * @index 全局样式入口文件
- * @svg 注册svg
- */
 import '@/styles/reset.css'
 import '@/styles/index.less'
 import '@/assets/icons/svg'
 
 const app = createApp(App)
-// import '@/mock/mock-server'
-
-// 注册全局组件
-registeGlobalComponent(app)
-
-// 设置element
+setGlobalComponent(app)
 setElement(app)
 
 app

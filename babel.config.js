@@ -8,7 +8,6 @@ module.exports = {
       }
     ]
   ],
-  // element-plus 按需引入
   plugins: [
     [
       'component',
