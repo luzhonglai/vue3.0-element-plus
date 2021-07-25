@@ -4,10 +4,10 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-02-05 10:40:53
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-07-23 15:47:28
+ * @LastEditTime: 2021-07-25 23:47:41
  */
 
-import App from './App.vue'
+import App from './App'
 import store from './store'
 import router from './router'
 import { createApp } from 'vue'

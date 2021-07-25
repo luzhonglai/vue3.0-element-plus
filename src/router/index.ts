@@ -4,48 +4,30 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-05-07 15:35:43
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-07-23 15:52:24
+ * @LastEditTime: 2021-07-25 23:52:17
  */
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 import { AppRouteRecordRaw } from '@/router/types'
-// const Layout = () => import('@/layout/index.vue')
+
 const constantRouterMap: AppRouteRecordRaw[] = [
   {
     path: '/',
     name: 'home',
-    redirect: 'index',
+    redirect: 'hello',
     meta: {
-      title: '超时占位',
-      icon: 'menu-authAdmin'
+      title: '测试demo',
+      icon: ''
     },
     children: [
       {
-        path: 'whiteList',
-        name: 'index',
+        path: 'hello',
+        name: 'hello',
         meta: {
           title: '白名单管理',
           icon: ''
         },
-        component: () => import('@/views/home/whiteList.tsx')
-      },
-      {
-        path: '/roleList',
-        name: 'roleList',
-        meta: {
-          title: '规则管理',
-          icon: ''
-        },
-        component: () => import('@/views/home/roleList')
-      },
-      {
-        path: '/orderAdmin',
-        name: 'orderAdmin',
-        meta: {
-          title: '订单管理',
-          icon: ''
-        },
-        component: () => import('@/views/home/orderAdmin')
+        component: () => import('@/views/hello')
       }
     ]
   }

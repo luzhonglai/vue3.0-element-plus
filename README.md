@@ -46,7 +46,6 @@ npm install yarn -g
 yarn install
 ```
 
-
 ### 多页面配置
 
 ### 快速开始

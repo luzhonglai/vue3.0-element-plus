@@ -4,7 +4,7 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-05-08 10:41:31
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-05-08 10:41:57
+ * @LastEditTime: 2021-07-25 23:48:10
  */
 
 import { defineComponent } from 'vue'
@@ -14,7 +14,7 @@ interface InputProps {
 }
 
 export default defineComponent({
-  name: 'home',
+  name: 'Home',
   setup(props: InputProps) {
     const handleChange = (event: any) => {
       props.onChange(event.target.value)
