@@ -4,7 +4,7 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-01-29 16:02:15
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-07-22 16:21:08
+ * @LastEditTime: 2021-07-26 17:50:50
  */
 
 'use strict'
@@ -40,10 +40,10 @@ const pages = {}
 
 if (appName.length > 0) {
   if (Array.isArray(appName) == true) {
-    for (const value of appName) {
+    for (const name of appName) {
       // eslint-disable-next-line no-prototype-builtins
-      if (apps.hasOwnProperty(value)) {
-        pages[value] = apps[value]
+      if (apps.hasOwnProperty(name)) {
+        pages[name] = apps[name]
       }
     }
   } else if (appName !== '') {
@@ -57,9 +57,9 @@ if (appName.length > 0) {
     console.error('\n------------------------------------------\n')
     process.exit(-1)
   } else {
-    console.error('------------------------------------------\n')
-    console.error(`应用名称: ${appName} ----- 页面总数为：${Object.keys(pages).length}`)
-    console.error('\n------------------------------------------\n')
+    console.info('------------------------------------------\n')
+    console.info(`应用名称: ${appName} ----- 页面总数为：${Object.keys(pages).length}`)
+    console.info('\n------------------------------------------\n')
   }
 }
 

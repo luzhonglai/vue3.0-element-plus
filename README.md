@@ -36,7 +36,6 @@
     └── unit
 ```
 
-
 ### 准备工作
 
 ```bash
@@ -49,6 +48,20 @@ yarn install
 
 ### 多页面配置
 
+```bash
+# 脚本指定目录进行打包
+yarn run serve  appName 'demo'
+
+## 
+module.exports = {
+  title: 'vue-h5-template',
+  baseUrl: 'http://localhost:9018',
+  baseApi: process.env.NODE_ENV === 'development' ? '/api' : '/portal', // 本地api请求地址
+  h5gateway: 'portal',
+  appName: ['demo']
+}
+```
+
 ### 快速开始
 
 ```bash
@@ -57,5 +70,11 @@ yarn run serve
 ```
 
 ### 优化问题记录
+
+```javascript
+// 编译优化
+
+
+```
 
 ### 最后
