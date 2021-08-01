@@ -4,7 +4,7 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-02-05 10:40:53
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-07-25 23:47:41
+ * @LastEditTime: 2021-08-01 12:30:04
  */
 
 import App from './App'
@@ -14,20 +14,18 @@ import { createApp } from 'vue'
 import { setElement } from '@/plugins/element'
 import { setGlobalComponent } from '@/components'
 
-// 引入mock
-// import '@/mock/mock-server'
+const app = createApp(App)
 
-// 引入路由守护（权限）
-// import './permiussion'
-
+/* gloabl  css */
 import '@/styles/reset.css'
 import '@/styles/index.less'
 import '@/assets/icons/svg'
 
-const app = createApp(App)
+// import '@/mock/mock-server'
+// import './permiussion'
+
 setGlobalComponent(app)
 setElement(app)
-
 app
   .use(store)
   .use(router)

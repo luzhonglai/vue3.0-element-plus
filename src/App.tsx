@@ -4,8 +4,9 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-07-21 11:12:56
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-07-25 23:46:46
+ * @LastEditTime: 2021-08-01 16:30:17
  */
+
 import { defineComponent } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 // import './style/main.scss'

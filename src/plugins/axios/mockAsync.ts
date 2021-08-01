@@ -1,21 +1,18 @@
 /*
- * @Descripttion:
  * @repository: https://github.com/luzhonglai
  * @Author: ZhongLai Lu
- * @Date: 2021-02-09 17:18:01
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-04-30 10:30:30
+ * @Date: 2021-02-09 17:18:01
+ * @LastEditTime: 2021-08-01 22:03:26
  */
 
+import qs from 'qs'
+import config from './config'
+import { debugInfo } from './debugInfo'
 import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig, AxiosError } from 'axios'
 
-import config from './config'
-
-import { debugInfo } from './debugInfo'
-
-import qs from 'qs'
-
 const { baseUrl, isLocalMock } = config
+const PATH_URL = baseUrl[isLocalMock ? 'devMock' : 'proMock']
 
 /**
  * @name:
@@ -23,8 +20,6 @@ const { baseUrl, isLocalMock } = config
  * @param {*} options
  * @return {*} Promise
  */
-
-const PATH_URL = baseUrl[isLocalMock ? 'devMock' : 'proMock']
 
 const mockAsync: AxiosInstance = axios.create({
   baseURL: PATH_URL, // api 的 base_url
@@ -43,8 +38,8 @@ mockAsync.interceptors.request.use(
   },
   (error: AxiosError) => {
     // Do something with request error
-    console.log(error) // for debug
     Promise.reject(error)
+    console.log(error) // for debug
   }
 )
 
@@ -60,15 +55,16 @@ mockAsync.interceptors.response.use(
   }
 )
 
-export default mockAsync
-
 /**
  * await错误方法封装
  * @param {*} promise promise 函数
  * @[null, data] 成功
  * @[err, null] 失败
  */
+
 export function awaitWrap(promise: any) {
   if (!promise) new Error('需要传入promise')
   return promise.then((data: any) => [null, data]).catch((err: any) => [err, null])
 }
+
+export default mockAsync

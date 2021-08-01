@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @repository: https://github.com/luzhonglai
+ * @Author: ZhongLai Lu
+ * @Date: 2021-07-23 23:53:50
+ * @LastEditors: Zhonglai Lu
+ * @LastEditTime: 2021-07-30 22:43:26
+-->
 # multiple-vue3-pc  (vue3与tsx体验版)
 
 > 基于 vue3.0 + typeScript + element-plus + sass/less 适配方案，适用于多页面cms端模板脚手架。
@@ -48,15 +56,15 @@ yarn install
 
 ### 多页面配置
 
-```bash
-# 脚本指定目录进行打包
+```javascript
+// 脚本指定目录进行打包
 yarn run serve  appName 'demo'
 
-## 
+// 配置打包多页面
 module.exports = {
   title: 'vue-h5-template',
   baseUrl: 'http://localhost:9018',
-  baseApi: process.env.NODE_ENV === 'development' ? '/api' : '/portal', // 本地api请求地址
+  baseApi: process.env.NODE_ENV === 'development' ? '/api' : '/portal',
   h5gateway: 'portal',
   appName: ['demo']
 }
