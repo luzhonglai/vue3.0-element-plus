@@ -1,9 +1,8 @@
 /*
- * @repository: https://github.com/luzhonglai
  * @Author: ZhongLai Lu
  * @LastEditors: Zhonglai Lu
  * @Date: 2021-02-09 17:18:01
- * @LastEditTime: 2021-08-01 22:03:26
+ * @LastEditTime: 2021-08-08 17:33:13
  */
 
 import qs from 'qs'
@@ -27,6 +26,7 @@ const mockAsync: AxiosInstance = axios.create({
 })
 
 // request拦截器
+
 mockAsync.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     if (config.method === 'post' && config.headers['Content-Type'] === 'application/x-www-form-urlencoded') {

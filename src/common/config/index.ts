@@ -1,16 +1,28 @@
-/*
- * @Descripttion:
- * @repository: https://github.com/luzhonglai
- * @Author: ZhongLai Lu
- * @Date: 2021-04-29 18:07:01
- * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-07-26 18:02:27
- */
+/* --------------------------------- 环境配置 封装 -------------------------------- */
 
-module.exports = {
-  title: 'vue-h5-template',
-  baseUrl: 'http://localhost:9018',
-  baseApi: process.env.NODE_ENV === 'development' ? '/api' : '/portal', // 本地api请求地址
-  h5gateway: 'portal',
-  appName: ['demo']
+const env = process.env.
+const EnvConfig = {
+  dev: {
+    baseApi: '/api',
+    mockApi: 'https://www.fastmock.site/mock/c1c302e8baed9894c48c17e4738c092e/api'
+  },
+  test: {
+    baseApi: '//test.futurefe.com/api',
+    mockApi: 'https://www.fastmock.site/mock/c1c302e8baed9894c48c17e4738c092e/api'
+  },
+  prod: {
+    baseApi: '//futurefe.com/api',
+    mockApi: 'https://www.fastmock.site/mock/c1c302e8baed9894c48c17e4738c092e/api'
+  }
+}
+
+/* -------------------------------- 多页面 打包配置 -------------------------------- */ß
+const EnvPage = {
+  buildMoudle: 'buildView'
+}
+
+export default {
+  env,
+  EnvPage,
+  ...EnvConfig[env]
 }

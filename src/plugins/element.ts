@@ -1,6 +1,7 @@
 // 按需加载element
 import { App } from 'vue'
-
+import locale from 'element-plus/lib/locale'
+import lang from 'element-plus/lib/locale/lang/zh-cn'
 import {
   ElSkeleton,
   ElSkeletonItem,
@@ -91,9 +92,6 @@ import {
   ElDescriptions,
   ElDescriptionsItem
 } from 'element-plus'
-
-import locale from 'element-plus/lib/locale'
-import lang from 'element-plus/lib/locale/lang/zh-cn'
 
 // 设置语言
 locale.use(lang)
@@ -192,6 +190,11 @@ const plugins = [
   ElNotification
 ]
 
+/**
+ * @name: setElement
+ * @return {*}
+ * @param {App} new vue
+ */
 export function setElement(app: App<Element>): void {
   components.forEach((component: any) => {
     app.component(component.name, component)

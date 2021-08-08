@@ -4,19 +4,17 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-01-29 16:02:15
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-07-26 17:50:50
+ * @LastEditTime: 2021-08-08 23:29:14
  */
 
-'use strict'
-const buildMoudle = []
+import config from './index'
 const fs = require('fs')
 const path = require('path')
 const minimist = require('minimist')
 const argv = minimist(process.argv.slice(2))
-const appName = argv.appName || buildMoudle
-
 const sourcePath = path.resolve(__dirname, '../src/pages')
 const dirents = fs.readdirSync(sourcePath, { encoding: 'utf8', withFileTypes: true })
+const appName = argv.appName || config.EnvPage.buildMoudle
 
 const apps = {}
 

@@ -4,27 +4,18 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-05-06 14:01:59
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-07-21 11:24:36
+ * @LastEditTime: 2021-08-08 23:46:45
  */
 
 import router from './router'
-
 import NProgress from 'nprogress' // 引入进度条
-
 import 'nprogress/nprogress.css' // 进度条样式
-
 import store from '@/store'
-
 import wsCache from '@/utils/cache'
-
 import getPageTitle from '@/utils/getPageTitle'
-
 NProgress.configure({ showSpinner: false }) // NProgress configuration
-
 import { PermissionActionsType } from '@/store/modules/permission/actions'
-
 import { dispatchAction, setStoreState } from '@/store/utils'
-
 import { RouteRecordRaw } from 'vue-router'
 
 const whiteList: string[] = ['/login'] // 白名单

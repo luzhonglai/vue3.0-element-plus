@@ -4,11 +4,11 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-02-16 18:25:50
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-03-02 12:31:27
+ * @LastEditTime: 2021-08-08 23:40:25
  */
-/**
- * request全局配置
- */
+
+import config from '@/common/config/'
+
 interface ConfigOptions {
   baseUrl: object
   resultCode: number | string
@@ -19,23 +19,11 @@ interface ConfigOptions {
   isLocalMock: boolean
 }
 
-const config: ConfigOptions = {
+const axiosConfig: ConfigOptions = {
   /**
    * api请求基础路径
    */
-  baseUrl: {
-    // 开发环境接口前缀
-    dev: '/',
-    // 生产环境接口前缀
-    pro: '/',
-    // 测试环境接口前缀
-    test: 'http://mockjs.test.cn',
-
-    // 线上mock
-    proMock: 'http://10.10.18.122:7300/mock/602228e4eb87c8001524ef8d/example',
-    // 本地mock
-    devMock: '/mock'
-  },
+  baseUrl: config.baseUrl,
 
   /**
    * 开启接口日志调试窗口
@@ -74,4 +62,4 @@ const config: ConfigOptions = {
   defaultHeaders: 'application/json'
 }
 
-export default config
+export default axiosConfig
