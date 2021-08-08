@@ -1,14 +1,15 @@
 <!--
- * @Descripttion: 
+ * @Descripttion:
  * @repository: https://github.com/luzhonglai
  * @Author: ZhongLai Lu
  * @Date: 2021-07-23 23:53:50
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-07-30 22:43:26
+ * @LastEditTime: 2021-08-09 00:29:09
 -->
-# multiple-vue3-pc  (vue3与tsx体验版)
 
-> 基于 vue3.0 + typeScript + element-plus + sass/less 适配方案，适用于多页面cms端模板脚手架。
+# multiple-vue3-pc (vue3 与 tsx 体验版)
+
+> 基于 vue3.0 + typeScript + element-plus + sass/less 适配方案，适用于多页面 cms 端模板脚手架。
 
 ## 模版亮点
 
@@ -18,7 +19,7 @@
 - Eelment-plus 组件按需加载
 - less/sass
 - Webpack 编译优化
-- Vuex  封装
+- Vuex 封装
 - Axios 封装
 - Eslint+Pettier 统一开发规范
 
@@ -61,14 +62,9 @@ yarn install
 yarn run serve  appName 'demo'
 
 // 配置打包多页面
-module.exports = {
-  title: 'vue-h5-template',
-  baseUrl: 'http://localhost:9018',
-  baseApi: process.env.NODE_ENV === 'development' ? '/api' : '/portal',
-  h5gateway: 'portal',
-  appName: ['demo']
-}
 ```
+
+<img src="./src/assets/code.png" width="100%" height="100%" alt="多页面 配置">
 
 ### 快速开始
 
@@ -81,8 +77,6 @@ yarn run serve
 
 ```javascript
 // 编译优化
-
-
 ```
 
 ### 最后

@@ -4,7 +4,7 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-02-05 10:40:53
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-08-01 12:30:04
+ * @LastEditTime: 2021-08-09 00:14:42
  */
 
 import App from './App'
@@ -23,10 +23,12 @@ import '@/assets/icons/svg'
 
 // import '@/mock/mock-server'
 // import './permiussion'
+console.log('环境变量=>', process.env)
 
 setGlobalComponent(app)
 setElement(app)
+
 app
-  .use(store)
   .use(router)
+  .use(store)
   .mount('#app')

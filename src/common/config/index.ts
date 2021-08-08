@@ -1,3 +1,12 @@
+/*
+ * @Descripttion:
+ * @repository: https://github.com/luzhonglai
+ * @Author: ZhongLai Lu
+ * @Date: 2021-04-29 18:07:01
+ * @LastEditors: Zhonglai Lu
+ * @LastEditTime: 2021-08-09 00:22:15
+ */
+
 /* --------------------------------- 环境配置 封装 -------------------------------- */
 
 const env = process.env.NODE_ENV || 'prod'
@@ -17,7 +26,8 @@ const EnvConfig = {
   }
 }
 
-/* -------------------------------- 多页面 打包配置 -------------------------------- */ ß
+/* -------------------------------- 多页面 打包配置 -------------------------------- */
+
 const EnvPage = {
   buildMoudle: 'buildView'
 }
