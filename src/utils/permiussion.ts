@@ -1,46 +1,48 @@
-/*
- * @Descripttion:
- * @repository: https://github.com/luzhonglai
- * @Author: ZhongLai Lu
- * @Date: 2021-05-06 14:01:59
- * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-08-08 23:46:45
- */
-
 import router from './router'
 import NProgress from 'nprogress' // 引入进度条
 import 'nprogress/nprogress.css' // 进度条样式
 import store from '@/store'
 import wsCache from '@/utils/cache'
 import getPageTitle from '@/utils/getPageTitle'
-NProgress.configure({ showSpinner: false }) // NProgress configuration
 import { PermissionActionsType } from '@/store/modules/permission/actions'
 import { dispatchAction, setStoreState } from '@/store/utils'
-import { RouteRecordRaw } from 'vue-router'
 
 const whiteList: string[] = ['/login'] // 白名单
+NProgress.configure({ showSpinner: false }) // NProgress configuration
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
+  // 获取用户token状态
+  const hasToken = wsCache.get('token')
   NProgress.start()
-  // eslint-disable-next-line no-constant-condition
-  if (true) {
+
+  if (hasToken) {
     if (to.path === '/login') {
       next({ path: '/' })
     } else {
-      console.log(to)
-      next()
+      try {
+        // 获取用户信息
+        const { roles } = await store.dispatch('user/getInfo')
+        // 获取当情角色可访问路由
+        const accessoRoutes = await store.dispatch('permission/GenerateRoutes', roles)
+
+        // 添加到路由
+        router.addRouters(accessoRoutes)
+        // replace true 确保路由添加完毕
+        next({ ...to, replace: true })
+      } catch (error) {
+        // 错误重置令牌， 从新登录(-->  网路错误、令牌失效)
+        await store.dispatch('user/resetToken')
+        next(`/login?redirect=${to.path}`)
+        alert(error || '未知错误')
+      }
     }
   } else {
     if (whiteList.indexOf(to.path) !== -1) {
+      // 路由白名单路过
       next()
     } else {
-      // 否则全部重定向到登录页
-      // next({
-      //   path: '/login',
-      //   query: {
-      //     redirect: to.path
-      //   }
-      // })
+      // 重定向登录
+      next(`/login?redirect=${to.path}`)
     }
   }
 })

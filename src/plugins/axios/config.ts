@@ -4,26 +4,28 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-02-16 18:25:50
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-08-08 23:40:25
+ * @LastEditTime: 2021-08-12 11:15:48
  */
 
 import config from '@/common/config/'
 
 interface ConfigOptions {
-  baseUrl: object
   resultCode: number | string
   defaultHeaders: string
   requestTimeout: number
-  isMock: boolean
+  isMock?: boolean
   isDebugInfo: boolean | string
   isLocalMock: boolean
+  env: string
+  baseApi: string
+  mockApi: string
 }
 
 const axiosConfig: ConfigOptions = {
   /**
-   * api请求基础路径
+   * api请基础配置
    */
-  baseUrl: config.baseUrl,
+  ...config,
 
   /**
    * 开启接口日志调试窗口

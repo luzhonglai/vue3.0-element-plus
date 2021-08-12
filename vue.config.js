@@ -4,7 +4,7 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-02-05 10:58:35
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-07-21 11:22:30
+ * @LastEditTime: 2021-08-12 11:28:15
  */
 
 // const pageConfig = require("./config/page.config");
@@ -41,22 +41,17 @@ module.exports = {
       .set('_v', resolve('src/views'))
       .set('_c', resolve('src/components'))
 
-    // 设置svg-loader
-    config.module
-      .rule('svg')
-      .exclude.add(resolve('src/assets/icons'))
-      .end()
+    // 配置svg规则排除icons目录中svg文件处理
+    // 目标给svg规则增加一个排除选项exclude:['path/to/icon']
+    config.module.rule('svg').exclude.add(resolve('src/icons'))
     config.module
       .rule('icons')
       .test(/\.svg$/)
-      .include.add(resolve('src/assets/icons'))
+      .include.add(resolve('./src/icons'))
       .end()
       .use('svg-sprite-loader')
       .loader('svg-sprite-loader')
-      .options({
-        symbolId: 'icon-[name]'
-      })
-      .end()
+      .options({ symbolId: 'icon-[name]' })
 
     // 生产环境
     config.when(process.env.NODE_ENV === 'production', (config) => {
@@ -78,11 +73,11 @@ module.exports = {
         new TerserPlugin({
           terserOptions: {
             // 生产环境自动删除console
-            compress: {
-              drop_debugger: true,
-              drop_console: true,
-              pure_funcs: ['console.log']
-            }
+            // compress: {
+            //   drop_debugger: true,
+            //   drop_console: true,
+            //   pure_funcs: ['console.log']
+            // }
           },
           sourceMap: false,
           parallel: true

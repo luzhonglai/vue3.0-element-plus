@@ -6,5 +6,4 @@
 /* ------------------------- const ss = ref('asds') ------------------------- */
 import { ref } from 'vue'
 </script>
-<style scoped>
-</style>
+<style scoped></style>

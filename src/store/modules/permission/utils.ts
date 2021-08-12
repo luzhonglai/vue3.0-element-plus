@@ -45,84 +45,16 @@ function getFilterRoutes(routes: any[]): any[] {
    * 设置404
    * 由于是动态路由，所以没配置到静态里，404路由需要在路由最后
    */
-  // res.push({
-  //   path: '/:path(.*)*',
-  //   redirect: '/404',
-  //   name: '404',
-  //   meta: {
-  //     hidden: true
-  //   }
-  // })
+  res.push({
+    path: '/:path(.*)*',
+    redirect: '/404',
+    name: '404',
+    meta: {
+      hidden: true
+    }
+  })
 
   return res
 }
-
-// 用于前端路由控制（非动态后端获取）, 路由过滤，主要用于权限控制
-// const generateRoutes = (
-//   routes: AppRouteRecordRaw[],
-//   basePath = '/'
-// ): AppRouteRecordRaw[] => {
-//   const res: AppRouteRecordRaw[] = []
-
-//   for (const route of routes) {
-//     // skip some route
-//     if (route.meta && route.meta.hidden && !route.meta.showMainRoute) {
-//       continue
-//     }
-
-//     let onlyOneChild = null
-
-//     if (
-//       route.children &&
-//       route.children.length === 1 &&
-//       !route.meta.alwaysShow
-//     ) {
-//       onlyOneChild = isExternal(route.children[0].path)
-//         ? route.children[0].path
-//         : path.resolve(
-//             path.resolve(basePath, route.path),
-//             route.children[0].path
-//           )
-//     }
-
-//     let data: any = null
-
-//     // 如不需要路由权限，可注释以下逻辑
-//     // 权限过滤，通过获取登录信息里面的角色权限，动态的渲染菜单。
-//     const list = wsCache.get(appStore.userInfo).checkedNodes
-//     // 开发者可以根据实际情况进行扩展
-//     for (const item of list) {
-//       // 通过路径去匹配
-//       if (
-//         isExternal(item.path) &&
-//         (onlyOneChild === item.path || route.path === item.path)
-//       ) {
-//         data = Object.assign({}, route)
-//       } else {
-//         const routePath = path.resolve(basePath, onlyOneChild || route.path)
-//         if (
-//           routePath === item.path ||
-//           (route.meta && route.meta.followRoute === item.path)
-//         ) {
-//           data = Object.assign({}, route)
-//         }
-//       }
-//     }
-//     // 如不需要路由权限，解注释下面一行
-//     // data = Object.assign({}, route)
-
-//     // recursive child routes
-//     if (route.children && data) {
-//       data.children = generateRoutes(
-//         route.children,
-//         path.resolve(basePath, data.path)
-//       )
-//     }
-//     if (data) {
-//       res.push(data as AppRouteRecordRaw)
-//     }
-//   }
-//   return res
-// }
 
 export { getFilterRoutes }

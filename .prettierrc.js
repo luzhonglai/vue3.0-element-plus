@@ -7,5 +7,4 @@ module.exports = {
   bracketSpacing: true, // 对象，数组加空格
   jsxBracketSameLine: true, // jsx > 是否另起一行
   arrowParens: 'always' // (x) => {} 是否要有小括号
-  // parser: 'vue' // 指定使用哪一种解析器
 }

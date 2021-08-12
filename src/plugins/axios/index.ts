@@ -2,47 +2,117 @@
  * @Descripttion:
  * @repository: https://github.com/luzhonglai
  * @Author: ZhongLai Lu
- * @Date: 2021-02-18 15:07:23
+ * @Date: 2021-07-21 11:12:56
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-08-01 19:01:12
+ * @LastEditTime: 2021-08-12 11:27:43
  */
-import request from './request'
 
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosPromise, AxiosResponse, AxiosError } from 'axios'
+import qs from 'qs'
+import router from '@/router'
 import config from './config'
+import Storage from '@/utils/cache'
+import { debugInfo } from './debugInfo'
+import { ElMessage } from 'element-plus'
 
-import { AxiosPromise, ResponseType } from 'axios'
+// 鉴权失败状态码
+const { resultCode, isMock, requestTimeout, defaultHeaders } = config
+const API_AUTH_STATUS = [403, 70000001, 70000003]
+const TOKEN_INVALID = 'Token认证失败，请重新登录'
+const NETWORK_ERROR = '网络请求异常，请稍后重试'
 
-import mockAsync from './mockAsync'
-const { defaultHeaders } = config
+// 创建axios实例
+const service: AxiosInstance = axios.create({
+  baseURL: config.baseApi,
+  timeout: requestTimeout || 5000,
+  headers: {
+    'Content-Type': defaultHeaders
+  }
+})
+
+service.interceptors.request.use((config: AxiosRequestConfig) => {
+  const headers = config.headers
+  const { token } = Storage.get('userInfo')
+
+  headers.startDate = Date.now()
+  if (headers['Content-Type'] === 'application/x-www-form-urlencoded') {
+    config.data = qs.stringify(config.data)
+  }
+  if (!headers.token) headers.token = token
+  return config
+})
+
+service.interceptors.response.use(
+  (response) => {
+    const { code, msg, data } = response.data
+    if (code == resultCode) {
+      return data
+    } else if (API_AUTH_STATUS.includes(code)) {
+      setTimeout(() => {
+        Storage.clear()
+        router.replace('/login')
+      }, 1500)
+      ElMessage.error(TOKEN_INVALID)
+      return Promise.reject(TOKEN_INVALID)
+    } else {
+      ElMessage.error(msg || NETWORK_ERROR)
+      return Promise.reject(msg || NETWORK_ERROR)
+    }
+  },
+  async (error: AxiosError) => {
+    const response: any = error.response
+    if (config.env !== 'prod') debugInfo(response)
+    ElMessage.error(error.message || NETWORK_ERROR)
+    return Promise.reject(error.message || NETWORK_ERROR)
+  }
+)
 
 interface Config {
-  url: string
-  method: 'get' | 'post' | 'delete' | 'put'
-  params: any
+  url?: string
+  method: 'get' | 'post' | 'delete' | 'put' | 'patch'
+  params?: any
   headersType?: string
-  responseType?: ResponseType
-  isMock?: boolean
+  responseType?: string
+  mock?: boolean
+  data?: any
 }
 
-function fetch({ url, method = 'post', params, headersType, responseType, isMock }: Config): AxiosPromise {
-  const options = {
-    url: url,
-    method,
-    responseType: responseType,
-    headers: {
-      'Content-Type': headersType || defaultHeaders
-    }
+function fetch(options?: any): AxiosPromise {
+  if (options.method.toLowerCase() == 'post') {
+    options.data = options.params
   }
-  if (options.method == 'get') {
-    options['params'] = params
+  let isMock = config.isMock
+  if (typeof options.mock !== 'undefined') {
+    isMock = options.mock
+  }
+  if (config.env === 'prod') {
+    service.defaults.baseURL = config.baseApi
   } else {
-    options['data'] = params
+    service.defaults.baseURL = isMock ? config.mockApi : config.baseApi
   }
-  if (isMock) {
-    return mockAsync(options)
-  } else {
-    return request(options)
-  }
+  return service(options)
 }
 
-export { fetch, mockAsync }
+;['get', 'post', 'put', 'delete', 'patch'].forEach((item) => {
+  fetch[item] = (url, data, options) => {
+    return fetch({
+      url,
+      data,
+      method: item,
+      ...options
+    })
+  }
+})
+
+/**
+ * await错误方法封装
+ * @param {*} promise promise 函数
+ * @[null, data] 成功
+ * @[err, null] 失败
+ */
+export function awaitWrap(promise: any) {
+  if (!promise) new Error('需要传入promise')
+  return promise.then((data: any) => [null, data]).catch((err: any) => [err, null])
+}
+
+export default fetch
