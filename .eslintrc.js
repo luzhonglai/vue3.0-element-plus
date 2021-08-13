@@ -4,7 +4,7 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-02-05 10:40:53
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-07-25 23:43:57
+ * @LastEditTime: 2021-08-13 22:51:43
  */
 
 module.exports = {
@@ -17,20 +17,20 @@ module.exports = {
   extends: [
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
-    'plugin:prettier/recommended', 
+    'prettier/@typescript-eslint'
+    // 'plugin:prettier/recommended',
   ],
 
   parserOptions: {
     ecmaVersion: 2020,
     parser: '@typescript-eslint/parser'
   },
-  
+
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     '@typescript-eslint/no-inferrable-types': 'off', // 关闭类型推断
-    "@typescript-eslint/explicit-function-return-type": "off",
+    '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off', // 关闭any警告
     '@typescript-eslint/no-this-alias': 'off',
     'no-unused-vars': 'off',

@@ -4,7 +4,7 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-02-05 10:58:35
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-08-12 11:28:15
+ * @LastEditTime: 2021-08-13 23:34:54
  */
 
 // const pageConfig = require("./config/page.config");
@@ -67,7 +67,6 @@ module.exports = {
           deleteOriginalAssets: false // 删除原文件
         })
       )
-
       //   // 代码压缩
       config.plugin('TerserPlugin').use(
         new TerserPlugin({

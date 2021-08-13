@@ -4,7 +4,7 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-07-21 11:12:56
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-08-12 11:27:43
+ * @LastEditTime: 2021-08-13 22:51:40
  */
 
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosPromise, AxiosResponse, AxiosError } from 'axios'
@@ -66,16 +66,6 @@ service.interceptors.response.use(
     return Promise.reject(error.message || NETWORK_ERROR)
   }
 )
-
-interface Config {
-  url?: string
-  method: 'get' | 'post' | 'delete' | 'put' | 'patch'
-  params?: any
-  headersType?: string
-  responseType?: string
-  mock?: boolean
-  data?: any
-}
 
 function fetch(options?: any): AxiosPromise {
   if (options.method.toLowerCase() == 'post') {
