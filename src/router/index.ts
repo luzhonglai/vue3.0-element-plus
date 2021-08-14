@@ -4,7 +4,7 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-05-07 15:35:43
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-08-13 23:34:32
+ * @LastEditTime: 2021-08-14 23:01:10
  */
 import { AppRouteRecordRaw } from '@/router/types'
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
