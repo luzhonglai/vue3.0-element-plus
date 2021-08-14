@@ -22,6 +22,7 @@
 - Vuex 封装
 - Axios 封装
 - Eslint+Pettier 统一开发规范
+- 
 
 ### 组织结构
 
