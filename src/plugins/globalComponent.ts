@@ -2,21 +2,14 @@
  * @Descripttion:
  * @repository: https://github.com/luzhonglai
  * @Author: ZhongLai Lu
- * @Date: 2021-07-22 16:41:24
+ * @Date: 2021-08-14 16:45:00
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-07-23 23:51:40
+ * @LastEditTime: 2021-08-14 18:42:01
  */
 
-/**
- * @name: 挂在当前组件
- * @return {*}
- * @param {vue} app
- */
-import Vue from 'vue'
-
-export const setGlobalComponent = (app?): void => {
+export const setupCustomComponents = (app?): void => {
   // app.componets()
-  const files = require.context('./', true, /\.(vue|jsx|jsx)$/)
+  const files = require.context('../components/', true, /\.(vue|jsx|tsx)$/)
   files.keys().forEach((key) => {
     const config = files(key)
     const name = key

@@ -4,30 +4,22 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-02-05 10:40:53
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-08-13 23:20:56
+ * @LastEditTime: 2021-08-14 19:07:14
  */
 
 import App from './App'
 import store from './store'
 import router from './router'
 import { createApp } from 'vue'
-import { setElement } from '@/plugins/element'
-import { setGlobalComponent } from '@/components'
+import { setupElement, setupGlobalMethods, setupCustomComponents, setupDirectives } from './plugins'
+
 const app = createApp(App)
+console.log('环境变量---->', process.env)
 
-// import '@/mock/mock-server'
-// import './permiussion'
-console.log('环境变量=>', process.env)
-
-import fetch from '@/plugins/axios'
-import api from '@/api/index'
-import wsCache from './utils/cache'
-app.config.globalProperties.$api = api
-app.config.globalProperties.$fetch = fetch
-app.config.globalProperties.$wsCache = wsCache
-
-setGlobalComponent(app)
-setElement(app)
+setupElement(app)
+setupDirectives(app)
+setupGlobalMethods(app)
+setupCustomComponents(app)
 
 app
   .use(router)
