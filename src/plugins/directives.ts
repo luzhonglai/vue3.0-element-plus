@@ -4,7 +4,7 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-08-14 16:44:35
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-08-14 23:43:18
+ * @LastEditTime: 2021-08-15 14:26:09
  */
 
 import permisson from '@/directives/permisson'
@@ -16,7 +16,7 @@ import permisson from '@/directives/permisson'
  * @param {vue} app 当前应用实例， vue3新特性
  * @returns {void} void
  */
-export function setupDirectives(app: ReturnType<typeof createApp>): void {
+export function setupDirectives(app): void {
   const files = require.context('../directives/', true, /\.(ts)$/)
   files.keys().forEach((key) => {
     const config = files(key)

@@ -4,7 +4,7 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-07-23 23:53:50
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-08-09 00:29:09
+ * @LastEditTime: 2021-08-17 16:12:47
 -->
 
 # multiple-vue3-pc (vue3 与 tsx 体验版)
@@ -21,8 +21,7 @@
 - Webpack 编译优化
 - Vuex 封装
 - Axios 封装
-- Eslint+Pettier 统一开发规范
-- 
+- Eslint+Pettier 代码规范
 
 ### 组织结构
 
@@ -31,9 +30,9 @@
 │   └── modules
 ├── public
 ├── src
-│   ├── api
-│   ├── assets
-│   ├── common  ---- 工具配置
+│   ├── api     ---- api管理
+│   ├── assets  ---- 静态资源
+│   ├── common  ---- 公共资源
 │   ├── layout  ---- 公告布局
 │   ├── plugins ---- 模版插件
 │   ├── router  ---- 路由模块
@@ -46,14 +45,25 @@
     └── unit
 ```
 
+### 功能、组件的封装
+
+- 按钮权限✅
+- 动态路由✅
+- 性能监控✅
+- 日志监控
+- CDN图片上传
+
 ### 准备工作
 
 ```bash
-#确保安装yarn
-npm install yarn -g
+#依赖安装方式
+npm install
 
 #安装依赖
 yarn install
+
+#启动
+yarn run serve
 ```
 
 ### 多页面配置
@@ -65,19 +75,16 @@ yarn run serve  appName 'demo'
 // 配置打包多页面
 ```
 
-<img src="./src/assets/code.png" width="100%" height="100%" alt="多页面 配置">
+<img src="./src/assets/code.png" width="100%" height="300" alt="多页面 配置">
 
-### 快速开始
-
-```bash
-yarn install
-yarn run serve
-```
-
-### 优化问题记录
+### 优化总结
 
 ```javascript
-// 编译优化
+/* 
+    编译优化、热更新缓存原理、提升40%
+*/
+const HardSourWebpackPlugin = require('HardSourWebpackPlugin')
+
 ```
 
 ### 最后

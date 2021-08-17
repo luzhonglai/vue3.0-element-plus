@@ -4,11 +4,9 @@
  * @Author: ZhongLai Lu
  * @Date: 2021-02-13 22:40:11
  * @LastEditors: Zhonglai Lu
- * @LastEditTime: 2021-02-13 22:41:31
+ * @LastEditTime: 2021-08-17 16:00:49
  */
 
-// const fs = require('fs')
-// const path = require('path')
 import config  from '@/plugins/axios/config'
 
 let { isMock } = config
