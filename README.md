@@ -9,7 +9,7 @@
 
 # multiple-vue3-pc (vue3 与 tsx 体验版)
 
-> 基于 vue3.0 + typeScript + element-plus + sass/less 适配方案，适用于多页面 cms 端模板脚手架。
+> 基于 vue3.0 + typeScript + element-plus + sass/less 适配方案，适用于多页面 cms 端模板。
 
 ## 模版亮点
 
