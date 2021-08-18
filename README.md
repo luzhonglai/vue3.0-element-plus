@@ -9,7 +9,7 @@
 
 # multiple-vue3-pc (vue3 与 tsx 体验版)
 
-> 基于 vue3.0 + typeScript + element-plus + sass/less 适配方案，适用于多页面 cms 端模板。
+> 🔥 🎉 Vue 3.0 + TypeScript + Vue-Router 4.0 + Element-Plus + Axios + Vuex 多页面开发模版
 
 ## 模版亮点
 
