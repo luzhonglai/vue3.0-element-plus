@@ -7,7 +7,7 @@
  * @LastEditTime: 2021-08-17 16:12:47
 -->
 
-# multiple-vue3-pc (vue3 与 tsx 体验版)
+# multiple-vue3-pc
 
 > 🔥 🎉 Vue 3.0 + TypeScript + Vue-Router 4.0 + Element-Plus + Axios + Vuex 多页面开发模版
 
